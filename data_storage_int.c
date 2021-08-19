@@ -1,5 +1,5 @@
 #include <stdio.h>
-/*数据存储---整型存储*/
+/*C语言：数据存储---整型存储*/
 int main()
 {
     return 0;
