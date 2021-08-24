@@ -61,4 +61,71 @@ void fun4(void){
     printf("\n出于今年的第%d天",sum);
     LOOP:sum == 365 ? printf("\n请输入合法月份\n"): 0 ;
 }
+/*C 练习实例5:输入3个数字比较大小*/
+void fun5(void){
+    int x,y,z,t;
+    printf("请输入3个数字，用逗号隔开：");
+    scanf("%d,%d,%d",&x,&y,&z);
+    if(x>y){
+        t=x;x=y;y=t;
+    }
+    if(x>z){
+        t=x;x=z;z=t;
+    }
+    if(y>z){
+        t=z;z=y;y=t;
+    }
 
+    printf("\n由大到小的顺序：%d > %d > %d",z,y,x);
+}
+/*C 练习实例8:九九乘法口诀表*/
+void fun8(void){
+    int i,j;
+    for(i=1;i<=9;i++){
+        for(j=1;j<=i;j++){
+            printf("%d*%d=%-3d",j,i,i*j);
+        }
+        printf("\n");
+    }
+}
+/*C 练习实例11:兔子生崽*/
+void fun11(void){
+    int arr[40]={0};
+    int i;
+    for(i=0;i<40;i++){
+       if(i>1){
+           arr[i]=arr[i-1]+arr[i-2];
+           printf("%d\t",arr[i]);
+       }else{
+           arr[i]=1;
+           printf("%d\t",arr[i]);
+       }
+    }
+
+}
+/*C 练习实例12:求101 ~ 200 之间的素数*/
+void fun12(void){
+    int i,j;
+    for(i=101;i<200;i++){
+        for(j=2;j<i;j++){
+            if(i%j==0){
+                break;
+            }
+        }
+        if(j==i){
+            printf("%d\t",i);
+        }
+    }
+}
+/*C 练习实例13:水仙花数*/
+void fun13(void){
+    int g,s,b,i;
+    for(i=100;i<=999;i++){
+        g=i%10;
+        s=i/10%10;
+        b=i/100%10;
+        if(g*g*g+s*s*s+b*b*b==i){
+            printf("%d\t",i);
+        }
+    }
+}
