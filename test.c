@@ -129,4 +129,74 @@ void fun13(void){
         }
     }
 }
-1
+/*C 练习实例18:求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字*/
+void fun18(void){
+    int s=0,a,n,t;
+       printf("请输入 a 和 n：\n");
+       scanf("%d%d",&a,&n);
+       t=a;
+       while(n>0)
+       {
+           s+=t;
+           printf("s = %d",s);
+           a=a*10;
+           t+=a;
+           printf("t = %d\n",t);
+           n--;
+       }
+       printf("a+aa+...=%d\n",s);
+}
+/*C 练习：结构体 按照学生成绩由高到低排序*/
+void fun19(void){
+    //学生信息结构
+    struct student{
+        int num;//学号
+        char name[20];//名称
+        float score;//成绩
+    };
+    //结构体赋值
+    struct student stu[8] = {
+            {1101,"张三",99.1},
+            {1102,"李四",88.0},
+            {1103,"王二",90.5},
+            {1104,"赵六",100.0},
+            {1105,"秦五",21.0},
+            {1106,"将",190.5},
+            {1107,"候",120.0},
+            {1108,"孙",210.0}
+    };
+    //声明一个结构体，用来临时存放信息
+    struct student t;
+    int i,j,k;//声明整型变量
+    for(i=0;i<7;i++){
+        k=i;//k 用来存储最大值下标  第一次默认首元素为最小值
+        for(j=i+1;j<8;j++){
+            if(stu[k].score < stu[j].score){//比较大小
+                k = j;//若  下标为j的值  大于  下标k的值 ，k = j
+            }
+        }
+        //替换数据
+        t = stu[i];
+        stu[i] = stu[k];
+        stu[k] = t;
+    }
+    for(i=0;i<8;i++){
+        printf("%d\t%s\t%6.2f\n",stu[i].num,stu[i].name,stu[i].score);
+    }
+}
+/*C 练习实例20：小球自由落体*/
+void fun20(void){
+    int i;
+    double s,h;
+    s = 100;//落地时经过的距离
+    h = 100.0/2;//第一次反弹的高度
+    printf("第1次落地时，共经过%f米，反弹高%f米\n",s,h);
+    for(i=2;i<=10;i++){
+
+        s=s+h*2;
+        h=h/2;
+        printf("第%d次落地时，共经过%f米，反弹高%f米\n",i,s,h);
+    }
+
+
+}
