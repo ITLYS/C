@@ -200,3 +200,24 @@ void fun20(void){
 
 
 }
+/*C 练习实例21：最大公约数 和 最小公倍数*/
+void fun21(int a,int b){
+    int i,k,r;
+    for(i=1;i<=a||i<=b;i++){
+        if((a%i==0)&&(b%i==0)){
+            k=i;
+        }
+    }
+    r = a*b/k;
+    printf("a b最大公约数:%d,最小公倍数：%d",k,r);
+}
+/*C 练习实例22：最大公约数 和 最小公倍数*/
+void fun22(int (*p)[4],int x,int y){
+    int i,j;
+    for(i=0;i<x;i++){
+        for(j=0;j<y;j++){
+            printf("%4d",*(p[i]+j));
+        }
+        printf("\n");
+    }
+}
