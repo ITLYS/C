@@ -221,3 +221,96 @@ void fun22(int (*p)[4],int x,int y){
         printf("\n");
     }
 }
+/*C 练习实例22：5人分鱼*/
+void fun23(void){
+    int one,two,three,four,five,sum;
+    for(sum=0;;sum++){
+        one   =  sum;
+        two   =  4 * (one - 1) / 5;
+        three =  4 * (two - 1) / 5;
+        four  =  4 * (three- 1)/ 5;
+        five  =  4 * (four - 1)/ 5;
+        if( one%5==1 && two%5==1 && three%5==1 && four%5==1 && five%5==1){
+            printf("五个人一共捕鱼%d条\n",sum);
+            printf("第一个人醒来看到的是%d条\n",one);
+            printf("第二个人醒来看到的是%d条\n",two);
+            printf("第三个人醒来看到的是%d条\n",three);
+            printf("第四个人醒来看到的是%d条\n",four);
+            printf("第个人醒来看到的是%d条\n",five);
+            break;
+        }
+    }
+}
+/*C 练习实例24：利用指针冒泡排序*/
+void fun24(void){
+    //初始化数组
+    int arr[10]={31,1,89,50,22,9,60,20,11,100};
+    //声明变量
+    int i,j,temp,count=0;
+    //外层循环
+    for(i=0;i< 10;i++){
+        //内层循环
+        for(j=0;j< 10-i;j++){
+            int *p = &arr[j];//使用指针指向 -> 遍历元素的地址
+            if( *p > *(p+1) ){//当前地址 与 下一个地址 进行比较
+               temp= *(p);  //调换位置
+               *(p) = *(p+1);
+               *(p+1) = temp;
+               count++;
+            }
+
+        }
+
+    }
+    printf("循环%d次\n",count);
+    for(i=0;i< 10;i++){
+        printf("%d\t",arr[i]);
+    }
+}
+/*C 练习实例24：利用指针快排序*/
+void fun25(void){
+    //初始化数组
+    int arr[10]={31,1,89,50,22,9,60,20,11,100};
+    //声明变量i,j控制循环 temp 临时存储元素  k 存最小值下标
+    int i,j,temp,s;
+
+    for(i=0;i<10-1;i++){
+        int *p = &arr[i];
+        int *pmin = p;
+        printf("i的值%d ",*pmin);
+        for(j=i+1;j<10;j++){
+            printf("j的值%d ",*(p+j));
+            if(*pmin>arr[j]){
+                pmin = &arr[j];
+            }
+        }
+          printf("%p %d\n",pmin,*pmin);
+        temp=*pmin;
+        *pmin=*p;
+        *p=temp;
+        printf("\n");
+        printf("第一次排序:");
+        for(s=0;s< 10;s++){
+            printf("%d\t",arr[s]);
+        }
+        printf("\n");
+        printf("\n");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
