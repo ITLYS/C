@@ -297,7 +297,38 @@ void fun25(void){
         printf("\n");
     }
 }
+/*
+ C 练习实例25：猴子摘桃
+*/
+//fun25(){
+//    int day = 9;
+//    int num=1;
+//    while (day>0) {
+//        num=(num+1)*2;
+//        day--;
+//    }
+//    printf("%d",num);
+//}
 
+/*
+ * 已知数列：2/1，3/2,5/3,8/5 ...
+ C 练习实例26：求数列前20项之和
+*/
+//void fun26(){
+//    int count=20;
+//    double sum=0,fz=1,fm=2,temp;
+//    while(count>0){
+//        printf("%d\t",count);
+//        sum+=fm/fz;
+//        printf("%f/%f\n",fm,fz);
+//        temp = fz;
+//        fz = fm;
+//        fm=fm+temp; 
+//        count--;
+
+//    }
+//    printf("%lf",sum);
+//}
 
 
 
