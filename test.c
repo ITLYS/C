@@ -300,7 +300,7 @@ void fun25(void){
 /*
  C Á·Ï°ÊµÀý25£ººï×ÓÕªÌÒ
 */
-//fun25(){
+//func25(){
 //    int day = 9;
 //    int num=1;
 //    while (day>0) {
