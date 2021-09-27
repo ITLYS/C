@@ -300,37 +300,71 @@ void fun25(void){
 /*
  C 练习实例25：猴子摘桃
 */
-//func25(){
-//    int day = 9;
-//    int num=1;
-//    while (day>0) {
-//        num=(num+1)*2;
-//        day--;
-//    }
-//    printf("%d",num);
-//}
+void func25(void ){
+    int day = 9;
+    int num=1;
+    while (day>0) {
+        num=(num+1)*2;
+        day--;
+    }
+    printf("%d",num);
+}
 
 /*
  * 已知数列：2/1，3/2,5/3,8/5 ...
  C 练习实例26：求数列前20项之和
 */
-//void fun26(){
-//    int count=20;
-//    double sum=0,fz=1,fm=2,temp;
-//    while(count>0){
-//        printf("%d\t",count);
-//        sum+=fm/fz;
-//        printf("%f/%f\n",fm,fz);
-//        temp = fz;
-//        fz = fm;
-//        fm=fm+temp; 
-//        count--;
+void fun26(void ){
+    int count=20;//    double sum=0,fz=1,fm=2,temp;
+    while(count>0){
+        printf("%d\t",count);
+        sum+=fm/fz;
+        printf("%f/%f\n",fm,fz);
+       temp = fz;
+       fz = fm;
+        fm=fm+temp; 
+        count--;
 
-//    }
-//    printf("%lf",sum);
-//}
+    }
+    printf("%lf",sum);
+}
 
+/*
+c语言实例27：求一个3x3矩阵的对角线之和
+*/
+void fun27(void){
+    int arr[3][3];
+    int i,j,sum=0;
+    printf("请输入数字：\n");
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            scanf("%3d",&arr[i][j]);
+        }
+    }
+    for(i=0;i<3;i++){
+        sum+=arr[i][i];
+    }
+    printf("\n对角线之和为%d",sum);
+}
 
+/*
+C语言实例28：求2~1000之内的完数
+*/
+void fun28(void){
+    int i,j,sum;//声明变量
+    for(i=2;i<=1000;i++){//遍历1000以内的数
+        sum=0;//初始值
+        for(j=1;j<i;j++){//从1~数值i
+            if(i%j==0){//只要取模等于0 那j就是i的因子
+                sum+=j;//累计因子之和
+            }
+        }
+
+        if(sum==i){//只要因子加起来等于它本身，那就是完数
+            printf("%d\t",i);
+        }
+    }
+}
 
 
 
