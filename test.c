@@ -365,7 +365,43 @@ void fun28(void){
         }
     }
 }
-
+/*
+C语言实例：循环输入数字，判断奇偶个数
+*/
+void fun29(void){
+    int a=0,b=0,num,i;
+    printf("请输入数字：");
+    for(i=0;i<5;i++){
+        scanf("%d",&num);
+        if(num%2==0)
+            a++;
+        else
+            b++;
+    }
+    printf("\n奇数%d个，偶数%d个",b,a);
+}
+/*
+C语言实例30：冒泡排序
+*/
+void fun30(void){
+    int arr[]={4,3,1,9,5,8,6,7,2};
+    int i,j,temp;
+    for(i=0;i<9;i++){
+       //j<9-i-1的目的就是减少对比
+       //每次i循环一次，都会把最大的数放到后边
+       //所以后边的数字都不需要再次进行对比了。
+       for(j=0;j<9-1-i;j++){
+           if(arr[j]>arr[j+1]){
+               temp = arr[j];
+               arr[j] = arr[j+1];
+               arr[j+1] = temp;
+           }
+       }
+    }
+    for(i=0;i<9;i++){
+        printf("%d\t",arr[i]);
+    }
+}
 
 
 
