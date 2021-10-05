@@ -1,6 +1,29 @@
 #include <stdio.h>
 /*C语言---指针进阶*/
 
+/*指针进阶---函数指针*/
+int main(){
+/*
+     * signal 是一个函数声明
+     * signal函数的参数有两个，第一个是int,第二个是函数指针，该函数指针 指向 的函数的参数是int，返回类型是void
+     * signal函数的返回类型也是一个函数指针，该函数指针 指向的函数的参数是int 返回类型是void
+     */
+    void(* signal(int,void(*)(int)) )(int);
+    //上下两个所表达的意思一样
+    typedef void(* pfun_t)(int);
+    pfun_t signal(int,pfun_t);
+    
+    
+    int (*pf)(int,int);//函数指针
+    int(*pfarr[4])(int,int);//函数指针数组
+    for(int i=0;i<4;i++){
+        printf("%d",pfarr[i](1,2));
+    }
+    int(*(*ppfarr)[4])(int,int);//指向函数指针数组的指针
+    //ppfarr是一个数组指针，指针指向的数组有四个元素
+    //指向数组的每个元素的类型是一个函数指针
+}
+
 /*指针进阶---数组指针*/
 int main(){
     //数组指针，其实是指针 是指向数组的指针
