@@ -1,8 +1,83 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /*C语言---指针进阶*/
 
+/*
+ *调换两个元素的位置，由bubble_sort调用
+ * ad1 ad2两个元素的地址
+ * width 元素的字节数
+ */
+void swap(char *ad1,char *ad2,int width){
+    int i;
+    for(i=0;i<width;i++){
+        //此处的调换是每个字节 每个字节的调换
+        char tmp=*ad1;
+             *ad1=*ad2;
+             *ad2=tmp;
+             ad1++;
+             ad2++;
+    }
+}
+/* 冒泡排序：支持各种数据类型
+ * base 需要排序的数据起始地址
+ * size 需要排序的元素数量
+ * width 元素的字节数，也就是数据类型
+ * cmp 如何比较两个元素的函数地址，需调用者定义该函数
+ */
+void bubble_sort(void *base,int size,int width,int (*cmp)(void *e1,void *e2)){
+    int i=0,j=0;
+    //外循环控制趟数
+    for(i=0;i<size-1;i++){
+        //内循环控制比较的次数
+        for(j=0;j<size-1-i;j++){
+            //根据函数指针，找到该函数，判断函数返回结果 大于0 需要调换两个元素的位置
+            //base 起初是一个空类型指针，空类型指针无法确定步长值，所以无法base++,同时也无法进行解引用操作*base
+            //所以我们把它转化为char *,char类型字节为1，容易掌控指针移动的步长值
+            //比如需要排序的数据类型是int ,j=0,base+0*4 指向首元素，j=1,base+1*4 指向下一个元素 一次类推
+           if(cmp((char *)base+j*width,(char *)base+(j+1)*width)>0){
+               //调用swap 函数 调换位置
+               swap((char *)base+j*width,(char *)base+(j+1)*width,width);
+           }
+        }
+    }
+}
+struct stu{
+  char name[20];
+  int  age;
+};
+/*
+ *比较两个元素方法，需调用者定义该函数
+ *注：返回类型为整型。因为类型为空指针，比较的时候也需要转化类型
+ */
+int cmp_int(void *e1,void *e2){
+    return *(int*)e1-*(int*)e2;
+}
+int cmp_age(void *e1,void *e2){
+    return ((struct stu *)e1)->age-((struct stu*)e2)->age;
+}
+int cmp_name(void *e1,void *e2){
+    return strcmp(((struct stu*)e1)->name,((struct stu*)e2)->name);
+}
 
-/*指针进阶--函数指针*/
+int main(void){
+    struct stu s[]={{"张三",20},{"李四",30},{"王五",10}};
+    int size = sizeof(s)/sizeof(s[0]);
+    bubble_sort(s,size,sizeof(s[0]),cmp_name);
+    for(int i=0;i<size;i++){
+        printf("%d\t%s\n",s[i].age,s[i].name);
+    }
+}
+//int main(void){
+//    int arr[]={9,8,7,6,5,4,3,2,1,0};
+//    int size = sizeof(arr)/sizeof(arr[0]);
+//    bubble_sort(arr,size,sizeof(arr[0]),cmp_int);
+//    for(int i=0;i<size;i++){
+//        printf("%d\t",arr[i]);
+//    }
+//}
+
+/*指针进阶--函数指针-------------------------------------------------*/
 int main()
 {
     //函数指针  是指向函数的指针，存放函数地址的指针
